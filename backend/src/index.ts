@@ -1,39 +1,14 @@
 import "reflect-metadata";
 import { createConnection, getRepository } from "typeorm";
-import { ApolloServer, gql } from 'apollo-server'
+import { ApolloServer } from 'apollo-server'
+
+import resolvers from './resolvers'
+import typeDefs from './typeDefs'
 
 async function cn() {
   await createConnection();
 }
 cn()
-
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
-
-  type Query {
-    books: [Book]
-  }
-`;
-
-const books = [
-  {
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
-  },
-  {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-];
-
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
 
 const server = new ApolloServer({ typeDefs, resolvers });
 

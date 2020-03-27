@@ -1,13 +1,19 @@
 directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
 
 type Book {
+  id: ID!
   title: String
   author: String
+  year: Int
 }
 
 enum CacheControlScope {
   PUBLIC
   PRIVATE
+}
+
+type Mutation {
+  book(author: String!, title: String!, year: Int!): Book
 }
 
 type Query {

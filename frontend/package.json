@@ -20,7 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "relay": "relay-compiler --src ./src --schema schema.graphql --artifactDirectory ./src/components/__generated__"
+    "relay": "relay-compiler --src ./src --schema schema.graphql --artifactDirectory ./src/components/__generated__",
+    "fetch": "get-graphql-schema http://localhost:4000 > schema.graphql"
   },
   "eslintConfig": {
     "extends": "react-app"

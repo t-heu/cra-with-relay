@@ -4,15 +4,16 @@ import { graphql } from "babel-plugin-relay/macro"
 
 import environment from "../Environment";
 
-function Home() {
+function ListBooks() {
   return (
     <QueryRenderer
       environment={environment}
       query={graphql`
-        query HomeQuery {
+        query ListBooksQuery {
           books {
             title
             author
+            year
           }
         }
       `}
@@ -22,11 +23,13 @@ function Home() {
         //alert(JSON.stringify(props))
         return (
           <div>
+            <h1>List Books</h1>
             {props.books.map(book => (
-              <>
+              <div className="book">
                 <strong>{book.author}</strong>
                 <p>{book.title}</p>
-              </>
+                <span>year: {book.year}</span>
+              </div>
             ))}
           </div>
         );
@@ -35,4 +38,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default ListBooks;

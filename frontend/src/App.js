@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import Home from './components/Home'
+import ListBooks from './components/ListBooks'
+import CreateBook from './components/CreateBook'
 
 function App() {
   return (
     <div>
-      <Home />
+      <CreateBook />
+      <ListBooks />
     </div>
   )
 }
